@@ -1,0 +1,17 @@
+{
+    "name": "derelict-vorbis",
+    "description": "A dynamic binding to the libvorbis library.",
+    "homepage": "https://github.com/DerelictOrg/DerelictVorbis",
+    "license": "Boost",
+    "authors": [
+        "Mike Parker"
+    ],
+
+    "targetName": "DerelictVorbis",
+    "targetPath": "lib",
+
+    "dependencies": {
+        "derelict-util": ">=1.0.0",
+        "derelict-ogg": "~master"
+    }
+}
