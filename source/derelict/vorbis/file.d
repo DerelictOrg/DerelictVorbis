@@ -260,8 +260,6 @@ class DerelictVorbisFileLoader : SharedLibLoader {
 
 __gshared DerelictVorbisFileLoader DerelictVorbisFile;
 
-static this() {
-    if( DerelictVorbisFile is null ) {
-        DerelictVorbisFile = new DerelictVorbisFileLoader();
-    }
+shared static this() {
+    DerelictVorbisFile = new DerelictVorbisFileLoader();
 }

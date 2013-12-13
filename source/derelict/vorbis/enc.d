@@ -119,8 +119,6 @@ class DerelictVorbisEncLoader : SharedLibLoader {
 
 __gshared DerelictVorbisEncLoader DerelictVorbisEnc;
 
-static this() {
-    if(  DerelictVorbisEnc is null  ) {
-        DerelictVorbisEnc = new DerelictVorbisEncLoader();
-    }
+shared static this() {
+    DerelictVorbisEnc = new DerelictVorbisEncLoader();
 }
