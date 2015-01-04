@@ -87,7 +87,7 @@ struct OggVorbis_File {
     ov_callbacks callbacks;
 }
 
-extern( C ) nothrow @nogc {
+extern( C ) @nogc nothrow {
     alias da_ov_clear = int function( OggVorbis_File* );
     alias da_ov_fopen = int function( const( char )*, OggVorbis_File* );
     alias da_ov_open_callbacks = int function( void* datasource, OggVorbis_File*, const( char )*, c_long, ov_callbacks );

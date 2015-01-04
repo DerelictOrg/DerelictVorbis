@@ -12,6 +12,6 @@
 
     "dependencies": {
         "derelict-util": ">=1.0.3",
-        "derelict-ogg": ">=1.0.0"
+        "derelict-ogg": "~>1.0.1"
     }
 }

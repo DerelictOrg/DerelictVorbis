@@ -132,7 +132,7 @@ struct vorbis_comment {
     char* vendor;
 }
 
-extern( C ) nothrow @nogc {
+extern( C ) @nogc nothrow {
     alias da_vorbis_info_init = void function( vorbis_info* );
     alias da_vorbis_info_clear = void function( vorbis_info* );
     alias da_vorbis_info_blocksize = int function( vorbis_info*,int );
