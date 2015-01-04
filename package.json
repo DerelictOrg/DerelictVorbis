@@ -12,6 +12,6 @@
 
     "dependencies": {
         "derelict-util": ">=1.0.0",
-        "derelict-ogg": "~master"
+        "derelict-ogg": ">=1.0.0"
     }
 }
