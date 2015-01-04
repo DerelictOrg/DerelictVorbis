@@ -83,7 +83,7 @@ enum {
     OV_ECTL_IBLOCK_SET =0x31,
 }
 
-extern( C ) nothrow {
+extern( C ) nothrow @nogc {
     alias da_vorbis_encode_init = int function( vorbis_info*, c_long, c_long, c_long, c_long, c_long );
     alias da_vorbis_encode_setup_managed = int function( vorbis_info*, c_long, c_long, c_long, c_long, c_long );
     alias da_vorbis_encode_setup_vbr = int function( vorbis_info*, c_long, c_long, float );
