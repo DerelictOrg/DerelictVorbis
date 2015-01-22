@@ -3,9 +3,7 @@ DerelictVorbis
 
 A dynamic binding to [libvorbis][1] for the D Programming Language.
 
-For information on how to build DerelictVorbis and link it with your programs, please see the post [Using Derelict][2] at The One With D.
-
-For information on how to load the libvorbis library via DerelictVorbis, see the page [DerelictUtil for Users][2] at the DerelictUtil Wiki. In the meantime, here's some sample code.
+Please see the pages [Building and Linking Derelict][2] and [Using Derelict][3], in the Derelict documentation, for information on how to build DerelictVorbis and load libvorbis at run time. In the meantime, here's some sample code.
 
 ```D
 import derelict.vorbis.vorbis;
@@ -24,5 +22,5 @@ void main() {
 ```
 
 [1]: http://xiph.org/vorbis/
-[2]: http://dblog.aldacron.net/derelict-help/using-derelict/
-[3]: https://github.com/DerelictOrg/DerelictUtil/wiki/DerelictUtil-for-Users
+[2]: http://derelictorg.github.io/compiling.html
+[3]: https://code.google.com/p/chromiumembedded/
