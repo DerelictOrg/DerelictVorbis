@@ -23,4 +23,4 @@ void main() {
 
 [1]: http://xiph.org/vorbis/
 [2]: http://derelictorg.github.io/compiling.html
-[3]: https://code.google.com/p/chromiumembedded/
+[3]: http://derelictorg.github.io/using.html
