@@ -1,0 +1,8 @@
+name "derelict-vorbis"
+description "A dynamic binding to libvorbis."
+homepage "https://github.com/DerelictOrg/DerelictVorbis"
+license "Boost"
+authors "Mike Parker"
+targetName "DerelictVorbis"
+targetPath "lib"
+dependency "derelict-util" version="~>3.0.0-alpha.2"
