@@ -117,7 +117,6 @@ extern( C ) @nogc nothrow {
     alias da_ov_info = vorbis_info* function( OggVorbis_File*, int );
     alias da_ov_comment = vorbis_comment* function( OggVorbis_File*, int );
     alias da_ov_read_float = c_long function( OggVorbis_File*, float***, int, int* );
-    alias da_ov_read_filter = c_long function( OggVorbis_File*, char*, int, int, int, int, int* );
     alias da_ov_read = c_long function( OggVorbis_File*, byte*, int, int, int, int, int* );
     alias da_ov_crosslap = int function( OggVorbis_File*, OggVorbis_File* );
     alias da_ov_halfrate = int function( OggVorbis_File*, int );
@@ -199,7 +198,6 @@ __gshared {
     da_ov_info ov_info;
     da_ov_comment ov_comment;
     da_ov_read_float ov_read_float;
-    da_ov_read_filter ov_read_filter;
     da_ov_read ov_read;
     da_ov_crosslap ov_crosslap;
     da_ov_halfrate ov_halfrate;
@@ -241,7 +239,6 @@ class DerelictVorbisFileLoader : SharedLibLoader {
         bindFunc( cast( void** )&ov_info, "ov_info" );
         bindFunc( cast( void** )&ov_comment, "ov_comment" );
         bindFunc( cast( void** )&ov_read_float, "ov_read_float" );
-        bindFunc( cast( void** )&ov_read_filter, "ov_read_filter" );
         bindFunc( cast( void** )&ov_read, "ov_read" );
         bindFunc( cast( void** )&ov_crosslap, "ov_crosslap" );
         bindFunc( cast( void** )&ov_halfrate, "ov_halfrate" );
