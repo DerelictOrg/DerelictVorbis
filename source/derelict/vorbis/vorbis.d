@@ -33,14 +33,14 @@ private {
     import derelict.util.system;
     import derelict.ogg.ogg;
 
-    static if( Derelict_OS_Windows )
+    static if(Derelict_OS_Windows)
         enum libNames = "vorbis.dll, libvorbis-0.dll, libvorbis.dll";
-    else static if( Derelict_OS_Mac )
+    else static if(Derelict_OS_Mac)
         enum libNames = "libvorbis.dylib, libvorbis.0.dylib";
-    else static if( Derelict_OS_Posix )
+    else static if(Derelict_OS_Posix)
         enum libNames = "libvorbis.so, libvorbis.so.0, libvorbis.so.0.3.0";
     else
-        static assert( 0, "Need to implement libvorbis libnames for this operating system." );
+        static assert(0, "Need to implement libvorbis libnames for this operating system.");
 }
 
 enum {
@@ -172,49 +172,49 @@ enum {
     OV_ECTL_IBLOCK_SET =0x31,
 }
 
-extern( C ) @nogc nothrow {
-    alias da_vorbis_info_init = void function( vorbis_info* );
-    alias da_vorbis_info_clear = void function( vorbis_info* );
-    alias da_vorbis_info_blocksize = int function( vorbis_info*,int );
-    alias da_vorbis_comment_init = void function( vorbis_comment* );
-    alias da_vorbis_comment_add = void function( vorbis_comment*, byte*t );
-    alias da_vorbis_comment_add_tag = void function( vorbis_comment*, byte*, byte* );
-    alias da_vorbis_comment_query = byte* function( vorbis_comment*, byte*, int );
-    alias da_vorbis_comment_query_count = int function( vorbis_comment*, byte* );
-    alias da_vorbis_comment_clear = void function( vorbis_comment* );
-    alias da_vorbis_block_init = int function( vorbis_dsp_state*, vorbis_block* );
-    alias da_vorbis_block_clear = int function( vorbis_block* );
-    alias da_vorbis_dsp_clear = void function( vorbis_dsp_state* );
-    alias da_vorbis_granule_time = double function( vorbis_dsp_state*, ogg_int64_t );
-    alias da_vorbis_version_string = const( char )* function();
-    alias da_vorbis_analysis_init = int function( vorbis_dsp_state*,vorbis_info* );
-    alias da_vorbis_commentheader_out = int function( vorbis_comment*, ogg_packet* );
-    alias da_vorbis_analysis_headerout = int function( vorbis_dsp_state*, vorbis_comment*, ogg_packet*, ogg_packet*, ogg_packet* );
-    alias da_vorbis_analysis_buffer = float** function( vorbis_dsp_state*, int );
-    alias da_vorbis_analysis_wrote = int function( vorbis_dsp_state*, int );
-    alias da_vorbis_analysis_blockout = int function( vorbis_dsp_state*,vorbis_block* );
-    alias da_vorbis_analysis = int function( vorbis_block*,ogg_packet* );
-    alias da_vorbis_bitrate_addblock = int function( vorbis_block* );
-    alias da_vorbis_bitrate_flushpacket = int function( vorbis_dsp_state*, ogg_packet* );
-    alias da_vorbis_synthesis_idheader = int function( ogg_packet* );
-    alias da_vorbis_synthesis_headerin = int function( vorbis_info*, vorbis_comment*, ogg_packet* );
-    alias da_vorbis_synthesis_init = int function( vorbis_dsp_state*, vorbis_info* );
-    alias da_vorbis_synthesis_restart = int function( vorbis_dsp_state* );
-    alias da_vorbis_synthesis = int function( vorbis_block*, ogg_packet* );
-    alias da_vorbis_synthesis_trackonly = int function( vorbis_block*, ogg_packet* );
-    alias da_vorbis_synthesis_blockin = int function( vorbis_dsp_state*,vorbis_block* );
-    alias da_vorbis_synthesis_pcmout = int function( vorbis_dsp_state*, float*** );
-    alias da_vorbis_synthesis_lapout = int function( vorbis_dsp_state*, float*** );
-    alias da_vorbis_synthesis_read = int function( vorbis_dsp_state*, int );
-    alias da_vorbis_packet_blocksize = c_long function( vorbis_info*,ogg_packet* );
-    alias da_vorbis_synthesis_halfrate = int function( vorbis_info*, int );
-    alias da_vorbis_synthesis_halfrate_p = int function( vorbis_info* );
-    alias da_vorbis_encode_init = int function( vorbis_info*, c_long, c_long, c_long, c_long, c_long );
-    alias da_vorbis_encode_setup_managed = int function( vorbis_info*, c_long, c_long, c_long, c_long, c_long );
-    alias da_vorbis_encode_setup_vbr = int function( vorbis_info*, c_long, c_long, float );
-    alias da_vorbis_encode_init_vbr = int function( vorbis_info*, c_long, c_long, float );
-    alias da_vorbis_encode_setup_init = int function( vorbis_info* );
-    alias da_vorbis_encode_ctl = int function( vorbis_info*, int, void* );
+extern(C) @nogc nothrow {
+    alias da_vorbis_info_init = void function(vorbis_info*);
+    alias da_vorbis_info_clear = void function(vorbis_info*);
+    alias da_vorbis_info_blocksize = int function(vorbis_info*,int);
+    alias da_vorbis_comment_init = void function(vorbis_comment*);
+    alias da_vorbis_comment_add = void function(vorbis_comment*, byte*t);
+    alias da_vorbis_comment_add_tag = void function(vorbis_comment*, byte*, byte*);
+    alias da_vorbis_comment_query = byte* function(vorbis_comment*, byte*, int);
+    alias da_vorbis_comment_query_count = int function(vorbis_comment*, byte*);
+    alias da_vorbis_comment_clear = void function(vorbis_comment*);
+    alias da_vorbis_block_init = int function(vorbis_dsp_state*, vorbis_block*);
+    alias da_vorbis_block_clear = int function(vorbis_block*);
+    alias da_vorbis_dsp_clear = void function(vorbis_dsp_state*);
+    alias da_vorbis_granule_time = double function(vorbis_dsp_state*, ogg_int64_t);
+    alias da_vorbis_version_string = const(char)* function();
+    alias da_vorbis_analysis_init = int function(vorbis_dsp_state*,vorbis_info*);
+    alias da_vorbis_commentheader_out = int function(vorbis_comment*, ogg_packet*);
+    alias da_vorbis_analysis_headerout = int function(vorbis_dsp_state*, vorbis_comment*, ogg_packet*, ogg_packet*, ogg_packet*);
+    alias da_vorbis_analysis_buffer = float** function(vorbis_dsp_state*, int);
+    alias da_vorbis_analysis_wrote = int function(vorbis_dsp_state*, int);
+    alias da_vorbis_analysis_blockout = int function(vorbis_dsp_state*,vorbis_block*);
+    alias da_vorbis_analysis = int function(vorbis_block*,ogg_packet*);
+    alias da_vorbis_bitrate_addblock = int function(vorbis_block*);
+    alias da_vorbis_bitrate_flushpacket = int function(vorbis_dsp_state*, ogg_packet*);
+    alias da_vorbis_synthesis_idheader = int function(ogg_packet*);
+    alias da_vorbis_synthesis_headerin = int function(vorbis_info*, vorbis_comment*, ogg_packet*);
+    alias da_vorbis_synthesis_init = int function(vorbis_dsp_state*, vorbis_info*);
+    alias da_vorbis_synthesis_restart = int function(vorbis_dsp_state*);
+    alias da_vorbis_synthesis = int function(vorbis_block*, ogg_packet*);
+    alias da_vorbis_synthesis_trackonly = int function(vorbis_block*, ogg_packet*);
+    alias da_vorbis_synthesis_blockin = int function(vorbis_dsp_state*,vorbis_block*);
+    alias da_vorbis_synthesis_pcmout = int function(vorbis_dsp_state*, float***);
+    alias da_vorbis_synthesis_lapout = int function(vorbis_dsp_state*, float***);
+    alias da_vorbis_synthesis_read = int function(vorbis_dsp_state*, int);
+    alias da_vorbis_packet_blocksize = c_long function(vorbis_info*,ogg_packet*);
+    alias da_vorbis_synthesis_halfrate = int function(vorbis_info*, int);
+    alias da_vorbis_synthesis_halfrate_p = int function(vorbis_info*);
+    alias da_vorbis_encode_init = int function(vorbis_info*, c_long, c_long, c_long, c_long, c_long);
+    alias da_vorbis_encode_setup_managed = int function(vorbis_info*, c_long, c_long, c_long, c_long, c_long);
+    alias da_vorbis_encode_setup_vbr = int function(vorbis_info*, c_long, c_long, float);
+    alias da_vorbis_encode_init_vbr = int function(vorbis_info*, c_long, c_long, float);
+    alias da_vorbis_encode_setup_init = int function(vorbis_info*);
+    alias da_vorbis_encode_ctl = int function(vorbis_info*, int, void*);
 }
 
 __gshared {
@@ -264,57 +264,57 @@ __gshared {
 
 class DerelictVorbisLoader : SharedLibLoader {
     public this() {
-        super( libNames );
+        super(libNames);
     }
 
     protected override void loadSymbols() {
-        bindFunc( cast( void** )&vorbis_info_init, "vorbis_info_init" );
-        bindFunc( cast( void** )&vorbis_info_clear, "vorbis_info_clear" );
-        bindFunc( cast( void** )&vorbis_info_blocksize, "vorbis_info_blocksize" );
-        bindFunc( cast( void** )&vorbis_comment_init, "vorbis_comment_init" );
-        bindFunc( cast( void** )&vorbis_comment_add, "vorbis_comment_add" );
-        bindFunc( cast( void** )&vorbis_comment_add_tag, "vorbis_comment_add_tag" );
-        bindFunc( cast( void** )&vorbis_comment_query, "vorbis_comment_query" );
-        bindFunc( cast( void** )&vorbis_comment_query_count, "vorbis_comment_query_count" );
-        bindFunc( cast( void** )&vorbis_comment_clear, "vorbis_comment_clear" );
-        bindFunc( cast( void** )&vorbis_block_init, "vorbis_block_init" );
-        bindFunc( cast( void** )&vorbis_block_clear, "vorbis_block_clear" );
-        bindFunc( cast( void** )&vorbis_dsp_clear, "vorbis_dsp_clear" );
-        bindFunc( cast( void** )&vorbis_granule_time, "vorbis_granule_time" );
-        bindFunc( cast( void** )&vorbis_version_string, "vorbis_version_string" );
+        bindFunc(cast(void**)&vorbis_info_init, "vorbis_info_init");
+        bindFunc(cast(void**)&vorbis_info_clear, "vorbis_info_clear");
+        bindFunc(cast(void**)&vorbis_info_blocksize, "vorbis_info_blocksize");
+        bindFunc(cast(void**)&vorbis_comment_init, "vorbis_comment_init");
+        bindFunc(cast(void**)&vorbis_comment_add, "vorbis_comment_add");
+        bindFunc(cast(void**)&vorbis_comment_add_tag, "vorbis_comment_add_tag");
+        bindFunc(cast(void**)&vorbis_comment_query, "vorbis_comment_query");
+        bindFunc(cast(void**)&vorbis_comment_query_count, "vorbis_comment_query_count");
+        bindFunc(cast(void**)&vorbis_comment_clear, "vorbis_comment_clear");
+        bindFunc(cast(void**)&vorbis_block_init, "vorbis_block_init");
+        bindFunc(cast(void**)&vorbis_block_clear, "vorbis_block_clear");
+        bindFunc(cast(void**)&vorbis_dsp_clear, "vorbis_dsp_clear");
+        bindFunc(cast(void**)&vorbis_granule_time, "vorbis_granule_time");
+        bindFunc(cast(void**)&vorbis_version_string, "vorbis_version_string");
 
-        bindFunc( cast( void** )&vorbis_analysis_init, "vorbis_analysis_init" );
-        bindFunc( cast( void** )&vorbis_commentheader_out, "vorbis_commentheader_out" );
-        bindFunc( cast( void** )&vorbis_analysis_headerout, "vorbis_analysis_headerout" );
+        bindFunc(cast(void**)&vorbis_analysis_init, "vorbis_analysis_init");
+        bindFunc(cast(void**)&vorbis_commentheader_out, "vorbis_commentheader_out");
+        bindFunc(cast(void**)&vorbis_analysis_headerout, "vorbis_analysis_headerout");
 
-        bindFunc( cast( void** )&vorbis_analysis_buffer, "vorbis_analysis_buffer" );
-        bindFunc( cast( void** )&vorbis_analysis_wrote, "vorbis_analysis_wrote" );
-        bindFunc( cast( void** )&vorbis_analysis_blockout, "vorbis_analysis_blockout" );
-        bindFunc( cast( void** )&vorbis_analysis, "vorbis_analysis" );
+        bindFunc(cast(void**)&vorbis_analysis_buffer, "vorbis_analysis_buffer");
+        bindFunc(cast(void**)&vorbis_analysis_wrote, "vorbis_analysis_wrote");
+        bindFunc(cast(void**)&vorbis_analysis_blockout, "vorbis_analysis_blockout");
+        bindFunc(cast(void**)&vorbis_analysis, "vorbis_analysis");
 
-        bindFunc( cast( void** )&vorbis_bitrate_addblock, "vorbis_bitrate_addblock" );
-        bindFunc( cast( void** )&vorbis_bitrate_flushpacket, "vorbis_bitrate_flushpacket" );
+        bindFunc(cast(void**)&vorbis_bitrate_addblock, "vorbis_bitrate_addblock");
+        bindFunc(cast(void**)&vorbis_bitrate_flushpacket, "vorbis_bitrate_flushpacket");
 
-        bindFunc( cast( void** )&vorbis_synthesis_headerin, "vorbis_synthesis_idheader" );
-        bindFunc( cast( void** )&vorbis_synthesis_headerin, "vorbis_synthesis_headerin" );
-        bindFunc( cast( void** )&vorbis_synthesis_init, "vorbis_synthesis_init" );
-        bindFunc( cast( void** )&vorbis_synthesis_restart, "vorbis_synthesis_restart" );
-        bindFunc( cast( void** )&vorbis_synthesis, "vorbis_synthesis" );
-        bindFunc( cast( void** )&vorbis_synthesis_trackonly, "vorbis_synthesis_trackonly" );
-        bindFunc( cast( void** )&vorbis_synthesis_blockin, "vorbis_synthesis_blockin" );
-        bindFunc( cast( void** )&vorbis_synthesis_pcmout, "vorbis_synthesis_pcmout" );
-        bindFunc( cast( void** )&vorbis_synthesis_lapout, "vorbis_synthesis_lapout" );
-        bindFunc( cast( void** )&vorbis_synthesis_read, "vorbis_synthesis_read" );
-        bindFunc( cast( void** )&vorbis_packet_blocksize, "vorbis_packet_blocksize" );
-        bindFunc( cast( void** )&vorbis_synthesis_halfrate, "vorbis_synthesis_halfrate" );
-        bindFunc( cast( void** )&vorbis_synthesis_halfrate_p, "vorbis_synthesis_halfrate_p" );
+        bindFunc(cast(void**)&vorbis_synthesis_headerin, "vorbis_synthesis_idheader");
+        bindFunc(cast(void**)&vorbis_synthesis_headerin, "vorbis_synthesis_headerin");
+        bindFunc(cast(void**)&vorbis_synthesis_init, "vorbis_synthesis_init");
+        bindFunc(cast(void**)&vorbis_synthesis_restart, "vorbis_synthesis_restart");
+        bindFunc(cast(void**)&vorbis_synthesis, "vorbis_synthesis");
+        bindFunc(cast(void**)&vorbis_synthesis_trackonly, "vorbis_synthesis_trackonly");
+        bindFunc(cast(void**)&vorbis_synthesis_blockin, "vorbis_synthesis_blockin");
+        bindFunc(cast(void**)&vorbis_synthesis_pcmout, "vorbis_synthesis_pcmout");
+        bindFunc(cast(void**)&vorbis_synthesis_lapout, "vorbis_synthesis_lapout");
+        bindFunc(cast(void**)&vorbis_synthesis_read, "vorbis_synthesis_read");
+        bindFunc(cast(void**)&vorbis_packet_blocksize, "vorbis_packet_blocksize");
+        bindFunc(cast(void**)&vorbis_synthesis_halfrate, "vorbis_synthesis_halfrate");
+        bindFunc(cast(void**)&vorbis_synthesis_halfrate_p, "vorbis_synthesis_halfrate_p");
 
-        bindFunc( cast( void** )&vorbis_encode_init, "vorbis_encode_init" );
-        bindFunc( cast( void** )&vorbis_encode_setup_managed, "vorbis_encode_setup_managed" );
-        bindFunc( cast( void** )&vorbis_encode_setup_vbr, "vorbis_encode_setup_vbr" );
-        bindFunc( cast( void** )&vorbis_encode_init_vbr, "vorbis_encode_init_vbr" );
-        bindFunc( cast( void** )&vorbis_encode_setup_init, "vorbis_encode_setup_init" );
-        bindFunc( cast( void** )&vorbis_encode_ctl, "vorbis_encode_ctl" );
+        bindFunc(cast(void**)&vorbis_encode_init, "vorbis_encode_init");
+        bindFunc(cast(void**)&vorbis_encode_setup_managed, "vorbis_encode_setup_managed");
+        bindFunc(cast(void**)&vorbis_encode_setup_vbr, "vorbis_encode_setup_vbr");
+        bindFunc(cast(void**)&vorbis_encode_init_vbr, "vorbis_encode_init_vbr");
+        bindFunc(cast(void**)&vorbis_encode_setup_init, "vorbis_encode_setup_init");
+        bindFunc(cast(void**)&vorbis_encode_ctl, "vorbis_encode_ctl");
     }
 }
 

@@ -35,22 +35,22 @@ private {
     import derelict.ogg.ogg;
     import derelict.vorbis.vorbis;
 
-    static if( Derelict_OS_Windows )
+    static if(Derelict_OS_Windows)
         enum libNames = "vorbisfile.dll, libvorbisfile-3.dll, libvorbisfile.dll";
-    else static if( Derelict_OS_Mac )
+    else static if(Derelict_OS_Mac)
         enum libNames = "libvorbisfile.dylib, libvorbisfile.0.dylib";
-    else static if( Derelict_OS_Posix )
+    else static if(Derelict_OS_Posix)
         enum libNames = "libvorbisfile.so, libvorbisfile.so.3, libvorbisfile.so.3.1.0";
     else
-        static assert( 0, "Need to implement libvorbisfile libnames for this operating system." );
+        static assert(0, "Need to implement libvorbisfile libnames for this operating system.");
 }
 
 struct ov_callbacks {
-    extern( C ) nothrow {
-        size_t function( void*, size_t, size_t, void* ) read_func;
-        int function( void*, ogg_int64_t, int ) seek_func;
-        int function( void* ) close_func;
-        c_long function( void* ) tell_func;
+    extern(C) nothrow {
+        size_t function(void*, size_t, size_t, void*) read_func;
+        int function(void*, ogg_int64_t, int) seek_func;
+        int function(void*) close_func;
+        c_long function(void*) tell_func;
     }
 }
 
@@ -87,63 +87,63 @@ struct OggVorbis_File {
     ov_callbacks callbacks;
 }
 
-extern( C ) @nogc nothrow {
-    alias da_ov_clear = int function( OggVorbis_File* );
-    alias da_ov_fopen = int function( const( char )*, OggVorbis_File* );
-    alias da_ov_open_callbacks = int function( void* datasource, OggVorbis_File*, const( char )*, c_long, ov_callbacks );
-    alias da_ov_test_callbacks = int function( void*, OggVorbis_File*, const( char )*, c_long, ov_callbacks );
-    alias da_ov_test_open = int function( OggVorbis_File* );
-    alias da_ov_bitrate = c_long function( OggVorbis_File*, int );
-    alias da_ov_bitrate_instant = c_long function( OggVorbis_File* );
-    alias da_ov_streams = c_long function( OggVorbis_File* );
-    alias da_ov_seekable = c_long function( OggVorbis_File* );
-    alias da_ov_serialnumber = c_long function( OggVorbis_File*, int );
-    alias da_ov_raw_total = ogg_int64_t function( OggVorbis_File*, int );
-    alias da_ov_pcm_total = ogg_int64_t function( OggVorbis_File*, int );
-    alias da_ov_time_total = double function( OggVorbis_File*, int );
-    alias da_ov_raw_seek = int function( OggVorbis_File*, ogg_int64_t );
-    alias da_ov_pcm_seek = int function( OggVorbis_File*, ogg_int64_t );
-    alias da_ov_pcm_seek_page = int function( OggVorbis_File*, ogg_int64_t );
-    alias da_ov_time_seek = int function( OggVorbis_File*, double );
-    alias da_ov_time_seek_page = int function( OggVorbis_File*, double );
-    alias da_ov_raw_seek_lap = int function( OggVorbis_File*, ogg_int64_t );
-    alias da_ov_pcm_seek_lap = int function( OggVorbis_File*, ogg_int64_t );
-    alias da_ov_pcm_seek_page_lap = int function( OggVorbis_File*, ogg_int64_t );
-    alias da_ov_time_seek_lap = int function( OggVorbis_File*, double );
-    alias da_ov_time_seek_page_lap = int function( OggVorbis_File*, double );
-    alias da_ov_raw_tell = ogg_int64_t function( OggVorbis_File* );
-    alias da_ov_pcm_tell = ogg_int64_t function( OggVorbis_File* );
-    alias da_ov_time_tell = double function( OggVorbis_File* );
-    alias da_ov_info = vorbis_info* function( OggVorbis_File*, int );
-    alias da_ov_comment = vorbis_comment* function( OggVorbis_File*, int );
-    alias da_ov_read_float = c_long function( OggVorbis_File*, float***, int, int* );
-    alias da_ov_read = c_long function( OggVorbis_File*, byte*, int, int, int, int, int* );
-    alias da_ov_crosslap = int function( OggVorbis_File*, OggVorbis_File* );
-    alias da_ov_halfrate = int function( OggVorbis_File*, int );
-    alias da_ov_halfrate_p = int function( OggVorbis_File* );
+extern(C) @nogc nothrow {
+    alias da_ov_clear = int function(OggVorbis_File*);
+    alias da_ov_fopen = int function(const(char)*, OggVorbis_File*);
+    alias da_ov_open_callbacks = int function(void* datasource, OggVorbis_File*, const(char)*, c_long, ov_callbacks);
+    alias da_ov_test_callbacks = int function(void*, OggVorbis_File*, const(char)*, c_long, ov_callbacks);
+    alias da_ov_test_open = int function(OggVorbis_File*);
+    alias da_ov_bitrate = c_long function(OggVorbis_File*, int);
+    alias da_ov_bitrate_instant = c_long function(OggVorbis_File*);
+    alias da_ov_streams = c_long function(OggVorbis_File*);
+    alias da_ov_seekable = c_long function(OggVorbis_File*);
+    alias da_ov_serialnumber = c_long function(OggVorbis_File*, int);
+    alias da_ov_raw_total = ogg_int64_t function(OggVorbis_File*, int);
+    alias da_ov_pcm_total = ogg_int64_t function(OggVorbis_File*, int);
+    alias da_ov_time_total = double function(OggVorbis_File*, int);
+    alias da_ov_raw_seek = int function(OggVorbis_File*, ogg_int64_t);
+    alias da_ov_pcm_seek = int function(OggVorbis_File*, ogg_int64_t);
+    alias da_ov_pcm_seek_page = int function(OggVorbis_File*, ogg_int64_t);
+    alias da_ov_time_seek = int function(OggVorbis_File*, double);
+    alias da_ov_time_seek_page = int function(OggVorbis_File*, double);
+    alias da_ov_raw_seek_lap = int function(OggVorbis_File*, ogg_int64_t);
+    alias da_ov_pcm_seek_lap = int function(OggVorbis_File*, ogg_int64_t);
+    alias da_ov_pcm_seek_page_lap = int function(OggVorbis_File*, ogg_int64_t);
+    alias da_ov_time_seek_lap = int function(OggVorbis_File*, double);
+    alias da_ov_time_seek_page_lap = int function(OggVorbis_File*, double);
+    alias da_ov_raw_tell = ogg_int64_t function(OggVorbis_File*);
+    alias da_ov_pcm_tell = ogg_int64_t function(OggVorbis_File*);
+    alias da_ov_time_tell = double function(OggVorbis_File*);
+    alias da_ov_info = vorbis_info* function(OggVorbis_File*, int);
+    alias da_ov_comment = vorbis_comment* function(OggVorbis_File*, int);
+    alias da_ov_read_float = c_long function(OggVorbis_File*, float***, int, int*);
+    alias da_ov_read = c_long function(OggVorbis_File*, byte*, int, int, int, int, int*);
+    alias da_ov_crosslap = int function(OggVorbis_File*, OggVorbis_File*);
+    alias da_ov_halfrate = int function(OggVorbis_File*, int);
+    alias da_ov_halfrate_p = int function(OggVorbis_File*);
 }
 
-private extern ( C ) nothrow {
-    size_t Derelict_VorbisRead( void* ptr, size_t byteSize, size_t sizeToRead, void* datasource ) {
-        return fread( ptr, byteSize, sizeToRead, cast( FILE* )datasource );
+private extern (C) nothrow {
+    size_t Derelict_VorbisRead(void* ptr, size_t byteSize, size_t sizeToRead, void* datasource) {
+        return fread(ptr, byteSize, sizeToRead, cast(FILE*)datasource);
     }
 
-    int Derelict_VorbisSeek( void* datasource, ogg_int64_t offset, int whence ) {
-        return fseek( cast( FILE* )datasource, cast( int )offset, whence );
+    int Derelict_VorbisSeek(void* datasource, ogg_int64_t offset, int whence) {
+        return fseek(cast(FILE*)datasource, cast(int)offset, whence);
     }
 
-    int Derelict_VorbisClose( void* datasource ) {
-        return fclose( cast( FILE* )datasource );
+    int Derelict_VorbisClose(void* datasource) {
+        return fclose(cast(FILE*)datasource);
     }
 
-    c_long Derelict_VorbisTell( void* datasource ) {
-        return cast( c_long )ftell( cast( FILE* )datasource );
+    c_long Derelict_VorbisTell(void* datasource) {
+        return cast(c_long)ftell(cast(FILE*)datasource);
     }
 }
 
 // ov_open is rewritten below because of incompatibility between compilers with FILE struct
 // Using this wrapper, it *should* work exactly as it would in c++. --JoeCoder
-int ov_open( FILE* f, OggVorbis_File* vf, const( char )* initial, c_long ibytes )
+int ov_open(FILE* f, OggVorbis_File* vf, const(char)* initial, c_long ibytes)
 {
     // Fill the ov_callbacks structure
     ov_callbacks vorbisCallbacks;    // Structure to hold pointers to callback functions
@@ -152,11 +152,11 @@ int ov_open( FILE* f, OggVorbis_File* vf, const( char )* initial, c_long ibytes 
     vorbisCallbacks.seek_func  = &Derelict_VorbisSeek;
     vorbisCallbacks.tell_func  = &Derelict_VorbisTell;
 
-    return ov_open_callbacks( cast( void* )f, vf, initial, cast( int )ibytes, vorbisCallbacks );
+    return ov_open_callbacks(cast(void*)f, vf, initial, cast(int)ibytes, vorbisCallbacks);
 }
 
 // ditto for ov_test
-int ov_test( FILE* f, OggVorbis_File* vf, const( char )* initial, c_long ibytes )
+int ov_test(FILE* f, OggVorbis_File* vf, const(char)* initial, c_long ibytes)
 {
     // Fill the ov_callbacks structure
     ov_callbacks vorbisCallbacks;    // Structure to hold pointers to callback functions
@@ -165,7 +165,7 @@ int ov_test( FILE* f, OggVorbis_File* vf, const( char )* initial, c_long ibytes 
     vorbisCallbacks.seek_func  = &Derelict_VorbisSeek;
     vorbisCallbacks.tell_func  = &Derelict_VorbisTell;
 
-    return ov_test_callbacks( cast( void* )f, vf, initial, cast( int )ibytes, vorbisCallbacks );
+    return ov_test_callbacks(cast(void*)f, vf, initial, cast(int)ibytes, vorbisCallbacks);
 }
 
 __gshared {
@@ -206,43 +206,43 @@ __gshared {
 
 class DerelictVorbisFileLoader : SharedLibLoader {
     public this() {
-        super( libNames );
+        super(libNames);
     }
 
     protected override void loadSymbols() {
-        bindFunc( cast( void** )&ov_clear, "ov_clear" );
-        bindFunc( cast( void** )&ov_fopen, "ov_fopen" );
-        bindFunc( cast( void** )&ov_open_callbacks, "ov_open_callbacks" );
-        bindFunc( cast( void** )&ov_test_callbacks, "ov_test_callbacks" );
-        bindFunc( cast( void** )&ov_test_open, "ov_test_open" );
-        bindFunc( cast( void** )&ov_bitrate, "ov_bitrate" );
-        bindFunc( cast( void** )&ov_bitrate_instant, "ov_bitrate_instant" );
-        bindFunc( cast( void** )&ov_streams, "ov_streams" );
-        bindFunc( cast( void** )&ov_seekable, "ov_seekable" );
-        bindFunc( cast( void** )&ov_serialnumber, "ov_serialnumber" );
-        bindFunc( cast( void** )&ov_raw_total, "ov_raw_total" );
-        bindFunc( cast( void** )&ov_pcm_total, "ov_pcm_total" );
-        bindFunc( cast( void** )&ov_time_total, "ov_time_total" );
-        bindFunc( cast( void** )&ov_raw_seek, "ov_raw_seek" );
-        bindFunc( cast( void** )&ov_pcm_seek, "ov_pcm_seek" );
-        bindFunc( cast( void** )&ov_pcm_seek_page, "ov_pcm_seek_page" );
-        bindFunc( cast( void** )&ov_time_seek, "ov_time_seek" );
-        bindFunc( cast( void** )&ov_time_seek_page, "ov_time_seek_page" );
-        bindFunc( cast( void** )&ov_raw_seek_lap, "ov_raw_seek_lap" );
-        bindFunc( cast( void** )&ov_pcm_seek_lap, "ov_pcm_seek_lap" );
-        bindFunc( cast( void** )&ov_pcm_seek_page_lap, "ov_pcm_seek_page_lap" );
-        bindFunc( cast( void** )&ov_time_seek_lap, "ov_time_seek_lap" );
-        bindFunc( cast( void** )&ov_time_seek_page_lap, "ov_time_seek_page_lap" );
-        bindFunc( cast( void** )&ov_raw_tell, "ov_raw_tell" );
-        bindFunc( cast( void** )&ov_pcm_tell, "ov_pcm_tell" );
-        bindFunc( cast( void** )&ov_time_tell, "ov_time_tell" );
-        bindFunc( cast( void** )&ov_info, "ov_info" );
-        bindFunc( cast( void** )&ov_comment, "ov_comment" );
-        bindFunc( cast( void** )&ov_read_float, "ov_read_float" );
-        bindFunc( cast( void** )&ov_read, "ov_read" );
-        bindFunc( cast( void** )&ov_crosslap, "ov_crosslap" );
-        bindFunc( cast( void** )&ov_halfrate, "ov_halfrate" );
-        bindFunc( cast( void** )&ov_halfrate_p, "ov_halfrate_p" );
+        bindFunc(cast(void**)&ov_clear, "ov_clear");
+        bindFunc(cast(void**)&ov_fopen, "ov_fopen");
+        bindFunc(cast(void**)&ov_open_callbacks, "ov_open_callbacks");
+        bindFunc(cast(void**)&ov_test_callbacks, "ov_test_callbacks");
+        bindFunc(cast(void**)&ov_test_open, "ov_test_open");
+        bindFunc(cast(void**)&ov_bitrate, "ov_bitrate");
+        bindFunc(cast(void**)&ov_bitrate_instant, "ov_bitrate_instant");
+        bindFunc(cast(void**)&ov_streams, "ov_streams");
+        bindFunc(cast(void**)&ov_seekable, "ov_seekable");
+        bindFunc(cast(void**)&ov_serialnumber, "ov_serialnumber");
+        bindFunc(cast(void**)&ov_raw_total, "ov_raw_total");
+        bindFunc(cast(void**)&ov_pcm_total, "ov_pcm_total");
+        bindFunc(cast(void**)&ov_time_total, "ov_time_total");
+        bindFunc(cast(void**)&ov_raw_seek, "ov_raw_seek");
+        bindFunc(cast(void**)&ov_pcm_seek, "ov_pcm_seek");
+        bindFunc(cast(void**)&ov_pcm_seek_page, "ov_pcm_seek_page");
+        bindFunc(cast(void**)&ov_time_seek, "ov_time_seek");
+        bindFunc(cast(void**)&ov_time_seek_page, "ov_time_seek_page");
+        bindFunc(cast(void**)&ov_raw_seek_lap, "ov_raw_seek_lap");
+        bindFunc(cast(void**)&ov_pcm_seek_lap, "ov_pcm_seek_lap");
+        bindFunc(cast(void**)&ov_pcm_seek_page_lap, "ov_pcm_seek_page_lap");
+        bindFunc(cast(void**)&ov_time_seek_lap, "ov_time_seek_lap");
+        bindFunc(cast(void**)&ov_time_seek_page_lap, "ov_time_seek_page_lap");
+        bindFunc(cast(void**)&ov_raw_tell, "ov_raw_tell");
+        bindFunc(cast(void**)&ov_pcm_tell, "ov_pcm_tell");
+        bindFunc(cast(void**)&ov_time_tell, "ov_time_tell");
+        bindFunc(cast(void**)&ov_info, "ov_info");
+        bindFunc(cast(void**)&ov_comment, "ov_comment");
+        bindFunc(cast(void**)&ov_read_float, "ov_read_float");
+        bindFunc(cast(void**)&ov_read, "ov_read");
+        bindFunc(cast(void**)&ov_crosslap, "ov_crosslap");
+        bindFunc(cast(void**)&ov_halfrate, "ov_halfrate");
+        bindFunc(cast(void**)&ov_halfrate_p, "ov_halfrate_p");
     }
 }
 
