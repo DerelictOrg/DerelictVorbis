@@ -132,46 +132,6 @@ struct vorbis_comment {
     char* vendor;
 }
 
-enum {
-    OV_ECTL_RATEMANAGE_GET =0x10,
-    OV_ECTL_RATEMANAGE_SET =0x11,
-    OV_ECTL_RATEMANAGE_AVG =0x12,
-    OV_ECTL_RATEMANAGE_HARD =0x13,
-}
-
-struct ovectl_ratemanage_arg {
-    int management_active;
-    c_long bitrate_hard_min;
-    c_long bitrate_hard_max;
-    double bitrate_hard_window;
-    c_long bitrate_av_lo;
-    c_long bitrate_av_hi;
-    double bitrate_av_window;
-    double bitrate_av_window_center;
-}
-
-enum {
-    OV_ECTL_RATEMANAGE2_GET =0x14,
-    OV_ECTL_RATEMANAGE2_SET =0x15,
-}
-
-struct ovectl_ratemanage2_arg {
-    int management_active;
-    c_long bitrate_limit_min_kbps;
-    c_long bitrate_limit_max_kbps;
-    c_long bitrate_limit_reservoir_bits;
-    double bitrate_limit_reservoir_bias;
-    c_long bitrate_average_kbps;
-    double bitrate_average_damping;
-}
-
-enum {
-    OV_ECTL_LOWPASS_GET =0x20,
-    OV_ECTL_LOWPASS_SET =0x21,
-    OV_ECTL_IBLOCK_GET =0x30,
-    OV_ECTL_IBLOCK_SET =0x31,
-}
-
 extern(C) @nogc nothrow {
     alias da_vorbis_info_init = void function(vorbis_info*);
     alias da_vorbis_info_clear = void function(vorbis_info*);
@@ -209,12 +169,6 @@ extern(C) @nogc nothrow {
     alias da_vorbis_packet_blocksize = c_long function(vorbis_info*,ogg_packet*);
     alias da_vorbis_synthesis_halfrate = int function(vorbis_info*, int);
     alias da_vorbis_synthesis_halfrate_p = int function(vorbis_info*);
-    alias da_vorbis_encode_init = int function(vorbis_info*, c_long, c_long, c_long, c_long, c_long);
-    alias da_vorbis_encode_setup_managed = int function(vorbis_info*, c_long, c_long, c_long, c_long, c_long);
-    alias da_vorbis_encode_setup_vbr = int function(vorbis_info*, c_long, c_long, float);
-    alias da_vorbis_encode_init_vbr = int function(vorbis_info*, c_long, c_long, float);
-    alias da_vorbis_encode_setup_init = int function(vorbis_info*);
-    alias da_vorbis_encode_ctl = int function(vorbis_info*, int, void*);
 }
 
 __gshared {
@@ -254,12 +208,6 @@ __gshared {
     da_vorbis_packet_blocksize vorbis_packet_blocksize;
     da_vorbis_synthesis_halfrate vorbis_synthesis_halfrate;
     da_vorbis_synthesis_halfrate_p vorbis_synthesis_halfrate_p;
-    da_vorbis_encode_init vorbis_encode_init;
-    da_vorbis_encode_setup_managed vorbis_encode_setup_managed;
-    da_vorbis_encode_setup_vbr vorbis_encode_setup_vbr;
-    da_vorbis_encode_init_vbr vorbis_encode_init_vbr;
-    da_vorbis_encode_setup_init vorbis_encode_setup_init;
-    da_vorbis_encode_ctl vorbis_encode_ctl;
 }
 
 class DerelictVorbisLoader : SharedLibLoader {
@@ -308,13 +256,6 @@ class DerelictVorbisLoader : SharedLibLoader {
         bindFunc(cast(void**)&vorbis_packet_blocksize, "vorbis_packet_blocksize");
         bindFunc(cast(void**)&vorbis_synthesis_halfrate, "vorbis_synthesis_halfrate");
         bindFunc(cast(void**)&vorbis_synthesis_halfrate_p, "vorbis_synthesis_halfrate_p");
-
-        bindFunc(cast(void**)&vorbis_encode_init, "vorbis_encode_init");
-        bindFunc(cast(void**)&vorbis_encode_setup_managed, "vorbis_encode_setup_managed");
-        bindFunc(cast(void**)&vorbis_encode_setup_vbr, "vorbis_encode_setup_vbr");
-        bindFunc(cast(void**)&vorbis_encode_init_vbr, "vorbis_encode_init_vbr");
-        bindFunc(cast(void**)&vorbis_encode_setup_init, "vorbis_encode_setup_init");
-        bindFunc(cast(void**)&vorbis_encode_ctl, "vorbis_encode_ctl");
     }
 }
 
