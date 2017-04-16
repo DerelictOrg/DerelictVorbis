@@ -33,7 +33,7 @@ private {
     import derelict.util.loader;
     import derelict.util.system;
     import derelict.ogg.ogg;
-    import derelict.vorbis.vorbis;
+    import derelict.vorbis.codec;
 
     static if(Derelict_OS_Windows)
         enum libNames = "vorbisfile.dll, libvorbisfile-3.dll, libvorbisfile.dll";

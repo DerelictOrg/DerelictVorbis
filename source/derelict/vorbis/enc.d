@@ -31,7 +31,7 @@ private {
     import core.stdc.config;
     import derelict.util.loader;
     import derelict.util.system;
-    import derelict.vorbis.vorbis;
+    import derelict.vorbis.codec;
 
     static if(Derelict_OS_Windows)
         enum libNames = "vorbisenc.dll, libvorbisenc-0.dll, libvorbisenc.dll";

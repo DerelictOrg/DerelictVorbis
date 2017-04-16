@@ -12,6 +12,13 @@ import derelict.vorbis.file;
 
 void main() {
     // Load the libvorbis library and its companion encoding and file libaries.
+    import derelict.vorbis;
+
+    /* Alternatively:
+    import derelict.vorbis.codec,
+           derelict.vorbis.enc,
+           derelict.vorbis.file;
+    */
     DerelictVorbis.load();
     DerelictVorbisEnc.load();
     DerelictVorbisFile.load();
