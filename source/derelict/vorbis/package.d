@@ -28,6 +28,6 @@ DEALINGS IN THE SOFTWARE.
 module derelict.vorbis;
 
 public
-import derelict.vorbis.codec
+import derelict.vorbis.codec,
        derelict.vorbis.enc,
        derelict.vorbis.file;
